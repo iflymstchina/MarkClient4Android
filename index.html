@@ -298,6 +298,15 @@ if ('08a1fbd288eab4b8e5151c42257e7ebc') {
     isUserLogged = true;
 }
 
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 $(document).ready(function() {
     App.init();
     console.log($.ua.device);
@@ -359,10 +368,11 @@ $(document).ready(function() {
     });
 
     //if (needInstallInOutBrowser) {
+    if (isWeiXin()) {
         setTimeout(function () {
             $('.view-alert').slideDown(1000);
         }, 500);
-    //}
+    }
     $("#lastest-li .close-tips").on('click', function() {
                                     $("#lastest-li").removeClass('hide').addClass('hide');
                                     // 使fashion模板背景变小
